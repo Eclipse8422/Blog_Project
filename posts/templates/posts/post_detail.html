@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <img 
+            class="banner" 
+            src="{{ post.banner.url }}" 
+            alt="{{ post.title }}"
+            
+        />
+        <h2>{{ post.title }}</h2>
+        <p>Posted on {{ post.date }} by {{ post.author }}</p>
+        <p>{{ post.body }}</p>
+    </section>
+    {% if post.author == request.user %}
+        <a href="{% url 'posts:edit_post' slug=post.slug%}">
+            <button class="form-submit">Edit</button>
+        </a>
+        <a href="{% url 'posts:delete_post' slug=post.slug%}">
+            <button class="form-submit">Delete</button>
+        </a>
+    {% endif %}
+{% endblock %}

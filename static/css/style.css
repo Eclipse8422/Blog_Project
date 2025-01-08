@@ -4,20 +4,11 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0; /* Ensures no extra margin around the body */
-    font-size: 3rem;
     background-color: black;
     color: whitesmoke;
-}
-
-h1, p {
-    text-align: center;
+    font-size: 3rem;
 }
 
 nav {
@@ -28,16 +19,65 @@ nav {
 }
 
 main {
-    flex-grow: 1;
-    display: grid;
-    place-content: center;
+    padding: 1rem;
+}
+
+section {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+}
+
+h1,
+h2 {
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1rem;
 }
 
 a {
     text-decoration: none;
-    color: #81dbb8;
+    
 }
 
 a:hover {
     opacity: .85;
+}
+
+.banner {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+}
+
+.form-with-validation {
+    max-width: 600px;
+    font-size: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+}
+
+.form-with-validation div {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+}
+
+.form-with-validation input {
+    padding: 0.25rem;
+    max-width: 300px;
+}
+
+.form-submit {
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 125px;
+}
+
+.form-submit{
+    opacity: 85%;
 }

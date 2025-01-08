@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Edit Post
+{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Edit Post</h1>
+        <form class="form-with-validation" action="{% url 'posts:edit_post' slug=post.slug %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="form-submit">Update Post</button>
+        </form>
+    </section>
+{% endblock %}

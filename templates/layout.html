@@ -11,11 +11,37 @@
     </title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/script.js' %}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav>
-        <a href="{% url 'home' %}">🏠</a> |
-        <a href="{% url 'about' %}">ℹ️</a> |
+        <a href="{% url 'home' %}">
+            <i class="fa-solid fa-house" title="Home"></i>
+        </a> |
+        <a href="{% url 'about' %}">
+            <i class="fa-solid fa-info" title="About"></i>
+        </a> |
+        <a href="{% url 'posts:list' %}">
+            <i class="fa-solid fa-signs-post" title="Posts"></i>
+        </a> |
+        {% if user.is_authenticated %}
+            <a href="{% url 'posts:new_post' %}">
+                <i class="fa-solid fa-square-plus" title="New Post"></i>
+            </a> |
+            <form class="logout" action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="logout-button" title="User Logout">
+                        <i class="fa-solid fa-right-from-bracket" style="color: #210099;"></i>
+                </button>
+            </form>
+        {% else %}
+            <a href="{% url 'users:register' %}">
+                <i class="fa-solid fa-user" title="Register"></i>
+            </a> |
+            <a href="{% url 'users:login' %}">
+                <i class="fa-solid fa-lock-open" title="Login"></i>
+            </a> |
+        {% endif %}
     </nav>
     <main>
         {% block content %}
